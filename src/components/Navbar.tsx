@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import menuItems from "../constants/MenuItems";
+import { HiMenu, HiX } from "react-icons/hi";
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,13 +21,7 @@ const Navbar: React.FC = () => {
           </ul>
           <button className="hidden md:block btn btn-primary bg-blue-600 hover:bg-blue-700 border-none">Configure</button>
           <button className="md:hidden text-white" onClick={() => setIsOpen(!isOpen)}>
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              {isOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
+            {isOpen ? <HiX className="w-6 h-6" /> : <HiMenu className="w-6 h-6" />}
           </button>
         </div>
         {isOpen && (
