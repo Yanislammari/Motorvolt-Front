@@ -1,9 +1,13 @@
 import React, { useState } from "react";
-import menuItems from "../constants/MenuItems";
 import { HiMenu, HiX } from "react-icons/hi";
+import type { MenuItem } from "../models/structs/MenuItem";
 
-const Navbar: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
+interface NavbarProps {
+  menuItems: MenuItem[];
+}
+
+const Navbar: React.FC<NavbarProps> = ({ menuItems }) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
     <nav className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-gray-800">
@@ -41,6 +45,6 @@ const Navbar: React.FC = () => {
       </div>
     </nav>
   );
-};
+}
 
 export default Navbar;
