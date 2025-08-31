@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import React from 'react'
+import Home from './pages/Home'
+import './index.css'
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <h1 className="text-3xl font-bold">Hello world!</h1>
+      <Home />
     </div>
   )
 }
