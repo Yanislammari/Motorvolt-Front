@@ -18,6 +18,7 @@ import { HiLightBulb } from "react-icons/hi";
 import RarityExplanationCard from "../components/RarityExplanationCard";
 import { TbChartBar, TbLock, TbTargetArrow } from "react-icons/tb";
 import CtaStartTrial from "../components/CtaStartTrial";
+import Footer from "../components/Footer";
 
 const Home: React.FC = () => {
   const [selectedCar, setSelectedCar] = useState<Car | null>(null);
@@ -105,6 +106,7 @@ const Home: React.FC = () => {
         <CarModal car={selectedCar} isOpen={isModalOpen} onClose={closeModal}/>
       )}
       <CtaStartTrial />
+      <Footer menuItems={menuItems} />
     </div>
   );
 };

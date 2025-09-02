@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { HiMenu, HiX } from "react-icons/hi";
 import type { MenuItem } from "../models/structs/MenuItem";
+import { useNavigate } from "react-router-dom";
 
 interface NavbarProps {
   menuItems: MenuItem[];
@@ -8,6 +9,7 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ menuItems }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   return (
     <nav className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-gray-800">
@@ -15,15 +17,13 @@ const Navbar: React.FC<NavbarProps> = ({ menuItems }) => {
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">MotorVolt</h1>
           <ul className="hidden md:flex space-x-8">
-            {menuItems.map((item, index) => (
+            {menuItems.filter(mi => mi.showInNavbar).map((item, index) => (
               <li key={index}>
-                <a href={item.path} className="text-white hover:text-blue-400 transition-colors">
-                  {item.label}
-                </a>
+                <p className="cursor-pointer text-white hover:text-blue-400 transition-colors" onClick={() => navigate(item.path)}>{item.label}</p>
               </li>
             ))}
           </ul>
-          <button className="hidden md:block btn btn-primary bg-blue-600 hover:bg-blue-700 border-none">Configure</button>
+          <button className="hidden md:block btn btn-primary bg-blue-600 hover:bg-blue-700 border-none"><p>Configure</p></button>
           <button className="md:hidden text-white" onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? <HiX className="w-6 h-6" /> : <HiMenu className="w-6 h-6" />}
           </button>
@@ -31,13 +31,13 @@ const Navbar: React.FC<NavbarProps> = ({ menuItems }) => {
         {isOpen && (
           <div className="md:hidden mt-4 pb-4 border-t border-gray-700">
             <ul className="space-y-3 pt-4">
-              {menuItems.map((item, index) => (
+              {menuItems.filter(mi => mi.showInNavbar).map((item, index) => (
                 <li key={index}>
-                  <a href={item.path} className="block text-white hover:text-blue-400 transition-colors" onClick={() => setIsOpen(false)}>{item.label}</a>
+                  <p className="cursor-pointer text-white hover:text-blue-400 transition-colors" onClick={() => navigate(item.path)}>{item.label}</p>
                 </li>
               ))}
               <li className="pt-2">
-                <button className="btn btn-primary bg-blue-600 hover:bg-blue-700 border-none w-full">Configure</button>
+                <button className="btn btn-primary bg-blue-600 hover:bg-blue-700 border-none w-full"><p>Configure</p></button>
               </li>
             </ul>
           </div>
