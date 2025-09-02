@@ -17,6 +17,7 @@ import { HiAdjustments } from "react-icons/hi";
 import { HiLightBulb } from "react-icons/hi";
 import RarityExplanationCard from "../components/RarityExplanationCard";
 import { TbChartBar, TbLock, TbTargetArrow } from "react-icons/tb";
+import CtaStartTrial from "../components/CtaStartTrial";
 
 const Home: React.FC = () => {
   const [selectedCar, setSelectedCar] = useState<Car | null>(null);
@@ -24,7 +25,6 @@ const Home: React.FC = () => {
   
   const rarities: Rarity[] = (raritiesData as Rarity[]);
   const rarityByName = Object.fromEntries((rarities as Rarity[]).map(r => [r.name, r]));
-
   const cars: Car[] = (carsData as any[]).map((c) => ({
     id: c.id,
     model: c.model,
@@ -96,22 +96,15 @@ const Home: React.FC = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {cars.map((car) => (
-              <CarCard 
-                key={car.id} 
-                car={car} 
-                onClick={handleCarClick}
-              />
+              <CarCard key={car.id} car={car} onClick={handleCarClick}/>
             ))}
           </div>
         </div>
       </section>
       {selectedCar && (
-        <CarModal
-          car={selectedCar}
-          isOpen={isModalOpen}
-          onClose={closeModal}
-        />
+        <CarModal car={selectedCar} isOpen={isModalOpen} onClose={closeModal}/>
       )}
+      <CtaStartTrial />
     </div>
   );
 };
