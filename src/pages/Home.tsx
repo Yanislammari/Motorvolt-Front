@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import HeroBanner from "../components/HeroBanner";
+import CarCard from "../components/CarCard";
+import CarModal from "../components/CarModal";
 import menuItems from "../constants/MenuItems";
 import heroBannerImg from "../assets/images/hero-banner.avif";
+import carSound from "../assets/sounds/car_sound.mp3";
 import FeatureCard from "../components/FeatureCard";
 import RarityCard from "../components/RarityCard";
+import raritiesData from "../assets/mocks/rarities.json";
+import carsData from "../assets/mocks/cars.json";
 import type { Rarity } from "../models/entities/Rarity";
+import type { Car } from "../models/entities/Car";
 import { HiOutlineSparkles } from "react-icons/hi";
 import { HiAdjustments } from "react-icons/hi";
 import { HiLightBulb } from "react-icons/hi";
@@ -13,50 +19,34 @@ import RarityExplanationCard from "../components/RarityExplanationCard";
 import { TbChartBar, TbLock, TbTargetArrow } from "react-icons/tb";
 
 const Home: React.FC = () => {
-  const rarities: Rarity[] = [
-    {
-      name: 'gray',
-      label: 'Common',
-      description: 'Everyday vehicles',
-      examples: 'City cars, Standard sedans',
-      gradient: 'from-gray-400 to-gray-500'
-    },
-    {
-      name: 'black',
-      label: 'Luxury',
-      description: 'Premium models',
-      examples: 'Premium sedans, Luxury SUVs',
-      gradient: 'from-gray-700 to-black'
-    },
-    {
-      name: 'black-red',
-      label: 'Prized',
-      description: 'Sports collection',
-      examples: 'Sports cars, Performance coupes',
-      gradient: 'from-gray-800 to-red-700'
-    },
-    {
-      name: 'white-gold',
-      label: 'Very Rare',
-      description: 'Limited edition',
-      examples: 'Limited editions, Supercars',
-      gradient: 'from-white to-yellow-400'
-    },
-    {
-      name: 'blue-gold',
-      label: 'Special',
-      description: 'Reprogrammed',
-      examples: 'Custom builds, Electric hypercars',
-      gradient: 'from-blue-400 to-yellow-400'
-    },
-    {
-      name: 'black-gold',
-      label: 'Ultra Rare',
-      description: 'Legendary status',
-      examples: 'One-offs cars, Concept cars',
-      gradient: 'from-black to-yellow-400'
-    }
-  ];
+  const [selectedCar, setSelectedCar] = useState<Car | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  const rarities: Rarity[] = (raritiesData as Rarity[]);
+  const rarityByName = Object.fromEntries((rarities as Rarity[]).map(r => [r.name, r]));
+
+  const cars: Car[] = (carsData as any[]).map((c) => ({
+    id: c.id,
+    model: c.model,
+    type: c.type,
+    rarity: rarityByName[c.rarity as keyof typeof rarityByName] as Rarity,
+    edition: c.edition,
+    cover: c.cover,
+    speed: c.speed,
+    weight: c.weight,
+    acceleration: c.acceleration,
+    sounds: (c.sounds || []).map((s: string) => (s === 'car_sound' ? carSound : s))
+  }));
+
+  const handleCarClick = (car: Car) => {
+    setSelectedCar(car);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedCar(null);
+  };
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
@@ -98,6 +88,30 @@ const Home: React.FC = () => {
           </div>
         </div>
       </section>
+      <section className="py-24 bg-gradient-to-b from-black to-gray-900">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl font-thin mb-6">Vehicle Collection</h2>
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">Discover our exclusive automotive masterpieces across all rarity tiers</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {cars.map((car) => (
+              <CarCard 
+                key={car.id} 
+                car={car} 
+                onClick={handleCarClick}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+      {selectedCar && (
+        <CarModal
+          car={selectedCar}
+          isOpen={isModalOpen}
+          onClose={closeModal}
+        />
+      )}
     </div>
   );
 };
