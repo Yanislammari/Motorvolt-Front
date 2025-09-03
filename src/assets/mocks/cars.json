@@ -1,0 +1,74 @@
+[
+  {
+    "id": "eris-celestia",
+    "model": "Celestia Veloce",
+    "type": "Electric luxury sedan",
+    "rarity": "blue-gold",
+    "edition": "Auric Tune",
+    "cover": "https://images.caradisiac.com/images/8/4/2/3/208423/S0-208423-798808.jpg",
+    "speed": 617,
+    "weight": 2200,
+    "acceleration": 3.8,
+    "sounds": ["car_sound"]
+  },
+  {
+    "id": "kanzaki-solena",
+    "model": "Solena",
+    "type": "Rear-wheel drive sports coupe",
+    "rarity": "black-red",
+    "edition": "Sportline",
+    "cover": "https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "speed": 460,
+    "weight": 1330,
+    "acceleration": 4.5,
+    "sounds": ["car_sound"]
+  },
+  {
+    "id": "montclair-ardent",
+    "model": "Ardent",
+    "type": "Luxury GT sedan",
+    "rarity": "black-gold",
+    "edition": "Gran Lusso",
+    "cover": "https://carfans.fr/wp-content/uploads/2024/07/AMG_GT63S_EPERF_12.webp",
+    "speed": 520,
+    "weight": 1880,
+    "acceleration": 3.9,
+    "sounds": ["car_sound"]
+  },
+  {
+    "id": "kyrron-phantom",
+    "model": "Phantom X",
+    "type": "Hypercar",
+    "rarity": "white-gold",
+    "edition": "Limited Edition",
+    "cover": "https://www.mercedes-benz.fr/content/dam/hq/passengercars/cars/amg-gt/amg-gt-63-s-e-performance-c192/pad/highlights/02-2024/images/mercedes-amg-gt-63-se-perf-c192-pad-highlights-coupe-3302x1858-02-2024.jpg/1740019608211.jpg?im=Crop,rect=(0,0,3302,1857);Resize=(1280,720)",
+    "speed": 800,
+    "weight": 1450,
+    "acceleration": 2.8,
+    "sounds": ["car_sound"]
+  },
+  {
+    "id": "linea-lyra",
+    "model": "Lyra",
+    "type": "5-door compact city car",
+    "rarity": "gray",
+    "edition": "Phase 1 (2025)",
+    "cover": "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "speed": 125,
+    "weight": 1210,
+    "acceleration": 9.5,
+    "sounds": ["car_sound"]
+  },
+  {
+    "id": "kanzaki-urban",
+    "model": "Urban GT",
+    "type": "Compact sports car",
+    "rarity": "black",
+    "edition": "Street Edition",
+    "cover": "https://maxton.design/hpeciai/eb1b339b325c2c46f49c41f108c05396/fre_pl_Spoiler-Cap-Central-Mercedes-AMG-GT-63-S-4-Door-Coupe-10510_2.jpg",
+    "speed": 280,
+    "weight": 1180,
+    "acceleration": 5.8,
+    "sounds": ["car_sound"]
+  }
+]

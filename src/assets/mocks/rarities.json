@@ -1,0 +1,44 @@
+[
+  {
+    "name": "gray",
+    "label": "Common",
+    "description": "Everyday vehicles",
+    "examples": "City cars, Standard sedans",
+    "gradient": "from-gray-400 to-gray-500"
+  },
+  {
+    "name": "black",
+    "label": "Luxury",
+    "description": "Premium models",
+    "examples": "Premium sedans, Luxury SUVs",
+    "gradient": "from-gray-700 to-black"
+  },
+  {
+    "name": "black-red",
+    "label": "Prized",
+    "description": "Sports collection",
+    "examples": "Sports cars, Performance coupes",
+    "gradient": "from-gray-800 to-red-700"
+  },
+  {
+    "name": "white-gold",
+    "label": "Very Rare",
+    "description": "Limited edition",
+    "examples": "Limited editions, Supercars",
+    "gradient": "from-white to-yellow-400"
+  },
+  {
+    "name": "blue-gold",
+    "label": "Special",
+    "description": "Reprogrammed",
+    "examples": "Custom builds, Electric hypercars",
+    "gradient": "from-blue-400 to-yellow-400"
+  },
+  {
+    "name": "black-gold",
+    "label": "Ultra Rare",
+    "description": "Legendary status",
+    "examples": "One-offs cars, Concept cars",
+    "gradient": "from-black to-yellow-400"
+  }
+]
